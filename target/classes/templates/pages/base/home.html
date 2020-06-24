@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/Base}">
+<head>
+<title>Accueil</title>
+ <meta charset="UTF-8"/>
+</head>
+<body>
+	<div layout:fragment="content">
+
+		<div class="row">
+			<div class="col-lg-3">
+				
+
+				<div class="card p-0 mb-2">
+					<div class="card-body p-2">
+						<form th:object="${publication}" method="get" th:action="@{/}">
+							<div class="form-group">
+								<label class="font-weight-bold">Title</label> <input type="text"
+									class="form-control" name="title" placeholder="elouahab"
+									th:field="*{title}">
+							</div>
+
+								
+								
+					 <button type="submit" class="btn btn-block" style="background-color: #f7f7f7;border-color: #ffffff;">Recherche</button>
+								
+						</form>
+					</div>
+				
+					<div class="card-body p-2">
+						<form th:object="${publication}" method="get" th:action="@{/}">
+							<div class="form-group">
+								<label class="font-weight-bold">Categorie</label> <select
+									class="form-control" th:name="catId" th:field="*{category.id}">
+									<option th:each="c: ${categories}" th:value="${c.id}"
+										th:text="${c.name}"></option>
+								</select>
+							</div>
+						<button type="submit" class="btn btn-block" style="background-color: #f7f7f7;border-color: #ffffff;">Recherche</button>
+
+						</form>
+					</div>
+								<div class="card-body p-2">
+									<form th:object="${publication}" method="get" th:action="@{/}">
+										<div class="form-group">
+											<label class="font-weight-bold">Decipline</label> <select
+												class="form-control" th:name="decId" th:field="*{decipline.id}">
+												<option th:each="d: ${deciplines}" th:value="${d.id}"
+													th:text="${d.name}"></option>
+											</select>
+										</div>
+									<button type="submit" class="btn btn-block" style="background-color: #f7f7f7;border-color: #ffffff;">Recherche</button>
+			
+									</form>
+								</div>
+								
+			<div class="card p-0 mb-2">
+					<div class="card-body p-2">
+									<form th:object="${publication}" method="get" th:action="@{/}">
+										<div class="form-group">
+											<label class="font-weight-bold">Auteurs</label> <select
+												class="form-control" th:name="auteur.id">
+												<option th:each="a: ${auteurs}" th:value="${a.id}"
+													th:text="${a.nom}"></option>
+											</select>
+										</div>
+									<button type="submit" class="btn btn-block" style="background-color: #f7f7f7;border-color: #ffffff;">Recherche</button>
+			
+									</form>
+								</div>
+				</div>
+				</div>
+
+				
+			</div>
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="bs-component w-100" th:if="${publications == null}">
+						<div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">—</button>
+                    <strong>err !</strong> <a href="#" class="alert-link">Aucun donnée.
+                    </div>
+					</div>
+					
+					
+					<div class="bs-component w-100" th:if="${comptepub != null}">
+					<div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">-</button>
+                    <strong>le nombre de publications par auteur :</strong><label th:text="${comptepub}"></label>
+                    </div>
+					</div>
+					
+					<div class="col-lg-12 p-1 w-100" th:each="p :${publications}">
+						<div class="card" style="width: 100%">
+
+							<div class="card-body">
+								<dl class="row pt-1">
+									<dt class="col-sm-4">Title :</dt>
+									<dd class="col-sm-8" th:text="${p.title}"></dd>
+									<dt class="col-sm-4">Catégorie :</dt>
+									<dd class="col-sm-8" th:text="${p.category.name}"></dd>
+									<dt class="col-sm-4">Decipline :</dt>
+									<dd class="col-sm-8" th:text="${p.decipline.name}"></dd>
+									<dt class="col-sm-4">Résumé :</dt>
+									<dd class="col-sm-8">
+										<p class="card-text" th:text="${p.resume}"></p>
+									</dd>
+
+									<dt class="col-sm-4">PDF :</dt>
+									<dd class="col-sm-8">
+										<div class="d-flex w-100 justify-content-between">
+											<small> <a
+												th:href="@{/admin/publications/download/{pubId}(pubId = ${p.id})}"
+												type="button"
+												class="btn btn-outline-secondary rounded-circle"> <img
+													style="width: 50px;"
+													src="/img_574462.png" />
+											</a>
+											</small>
+										</div>
+
+									</dd>
+
+								</dl>
+							</div>
+
+
+
+							<div class="card-body">
+								<blockquote class="blockquote mb-0"
+									th:if="${p.authors.size() > 0}">
+									<footer class="blockquote-footer">
+									by
+										<cite title="Source Title" th:each="a :${p.authors}"
+											th:text="${a.nom} +' '+ ${a.prenom}"></cite>
+									</footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

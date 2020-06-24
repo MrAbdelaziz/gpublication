@@ -1,0 +1,43 @@
+body,
+html {
+    background-color: #040f19;
+}
+
+.breadcrumb .breadcrumb-item a{
+    color: #772953 !important;
+}
+
+.sidebar-menu {
+    left: 0;
+    z-index: 1000;
+    display: block;
+    float: left;
+    min-width: 10rem;
+    width: 100% !important;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #772953 !important;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+.table thead{
+    background-color: #772953 !important;
+}
+
+.table thead tr th{
+    color: white !important;
+}
+
+.add{
+    background-color: #772953 !important;
+}
+
+blockquote footer cite{
+    color: #772953 !important;
+}

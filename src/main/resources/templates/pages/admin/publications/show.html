@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Informations sur Publication</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div layout:fragment="admin_content">
+    <div class="card" style="width: 100%">
+    
+      <div class="card-body">
+            <div class="media">
+                <div class="media-body">
+                    <div class="d-flex w-100 justify-content-between">
+                        <small>date de création :<small th:text="${#dates.format(publication.createdAt, 'yyyy-MM-dd')}"></small></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+        <div class="card-header">
+           Informations sur Publication
+        </div>
+        <div class="card-body">
+		             <dl class="row pt-1">
+                        <dt class="col-sm-4">Title :</dt>
+                        <dd class="col-sm-8" th:text="${publication.title}"></dd>
+                        <dt class="col-sm-4">Catégorie :</dt>
+                        <dd class="col-sm-8" th:text="${publication.category.name}"></dd>
+                        <dt class="col-sm-4">Decipline :</dt>
+                        <dd class="col-sm-8" th:text="${publication.decipline.name}"></dd>
+                        <dt class="col-sm-4">Résumé :</dt>
+                        <dd class="col-sm-8"> <p class="card-text" th:text="${publication.resume}"></p></dd>
+                   
+                   		<dt class="col-sm-4">PDF :</dt>
+                        <dd class="col-sm-8">
+	                        <div class="d-flex w-100 justify-content-between">
+	                                    <small>
+	                                        <a th:href="@{/admin/publications/download/{pubId}(pubId = ${publication.id})}" type="button" class="btn btn-outline-secondary rounded-circle">
+	                                            <img style="width: 50px;" src="../../../img_574462.png"/>
+	                                        </a>
+	                                    </small>
+	                                </div>
+                        
+                        </dd>
+                   
+                    </dl>
+                      
+            
+        </div>
+        
+        
+
+    <div class="card mt-3" style="width: 100%;border:0px">
+        <div class="card-header">
+             Auteurs
+        </div>
+        <div class="card-body">
+            <span th:each="a :${publication.authors}" th:text="${a.nom} + ${a.prenom}" class="badge badge-light mr-2"></span>
+        </div>
+        
+        <form th:action="@{/admin/publications/delete/{id} (id = ${publication.id}) }" method="get">
+                    <button type="submit" class="btn btn-primary mt-2" style="color: #333;background-color: #f7f7f7;border-color: #ffffff;">Supprimer</button>
+        </form>
+        
+        
+    </div>
+    </div>
+
+   
+
+</div>
+</body>
+</html>

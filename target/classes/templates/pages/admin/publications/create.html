@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Publication</title>
+     <meta charset="UTF-8"/>
+    
+</head>
+<body>
+    <div layout:fragment="admin_content">
+            <div class="card" style="width: 100%">
+                <div class="card-header">
+                    Informations sur la publication
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/admin/publications/store}"
+                          method="post" th:object="${publication}"
+                          enctype="multipart/form-data"
+                    >
+                                                <label for="inputTitle" class="col-sm-2 col-form-label" style="font-weight: bold">Title :</label>
+                    
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <input type="text" th:field="*{title}" class="form-control" placeholder="Title" id="inputTitle" />
+                            </div>
+                        </div>
+                            <label for="inputpublication" class="col-sm-3 col-form-label" style="font-weight: bold">Date de publication :</label>
+
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                                <input type="date" th:field="*{datePublication}" class="form-control" placeholder="Prenom" id="inputpublication" />
+                            </div>
+                        </div>
+
+
+                            <label class="col-sm-2 col-form-label" style="font-weight: bold">Catégorie :</label>
+
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{category}" >
+                                    <option th:each="c: ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+ <label class="col-sm-2 col-form-label" style="font-weight: bold">Decipline :</label>
+                        <div class="form-group row">
+                           
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{decipline}" >
+                                    <option th:each="d: ${deciplines}" th:value="${d.id}" th:text="${d.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                            <label class="col-sm-2 col-form-label" style="font-weight: bold">Résumé :</label>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="exampleTextarea" rows="3" th:field="*{resume}"></textarea>
+                            </div>
+                        </div>
+                            <label class="col-sm-2 col-form-label" style="font-weight: bold">Pdf :</label>
+
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <input type="file" class="form-control" name="files"  multiple />
+                            </div>
+                        </div>
+				 <button type="submit" style="background-color: #797574; border-color: #fff;" class="btn btn-primary mt-2">Submit</button>
+				
+                    </form>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

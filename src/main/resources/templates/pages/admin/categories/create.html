@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Créer une nouvelle catégorie</title>
+    <meta charset="UTF-8"/>
+    
+</head>
+<body>
+    <div layout:fragment="admin_content">
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+               Créer une nouvelle catégorie
+            </div>
+            <div class="card-body">
+                <form action="#" th:action="@{/admin/categories/store}" th:object="${category}" method="post">
+                    <div class="form-group row">
+                        <label for="inputName" class="col-sm-2 col-form-label" style="font-weight: bold">nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{name}" class="form-control" placeholder="Name" id="inputName" />
+                        </div>
+                    </div>
+
+                    <button type="submit" style="background-color: #797574; border-color: #fff;" class="btn btn-primary">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

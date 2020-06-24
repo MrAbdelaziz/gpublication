@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Auteur</title>
+</head>
+<body>
+    <div layout:fragment="admin_content">
+        <form class="mb-5" action="#" th:action="@{/admin/authors/store}" th:object="${author}" method="post">
+            <div class="card" style="width: 100%">
+                <div class="card-header">
+                    Informations sur l'auteur
+                </div>
+                <div class="card-body">
+                        <label for="inputNom" class="col-sm-2 col-form-label" style="font-weight: bold">Nom :</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{nom}" class="form-control" placeholder="Nom" id="inputNom" />
+                        </div>
+                    </div>
+                        <label for="inputPrenom" class="col-sm-2 col-form-label" style="font-weight: bold">Prenom :</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{prenom}" class="form-control" placeholder="Prenom" id="inputPrenom" />
+                        </div>
+                    </div>
+                        <label for="inputDate" class="col-sm-3 col-form-label" style="font-weight: bold">Date naissance :</label>
+                    <div class="form-group row">
+                        <div class="col-sm-9">
+                            <input type="date" th:field="*{dateNaissance}" class="form-control" id="inputDate" />
+                        </div>
+                    </div>
+                        <label for="inputDate" class="col-sm-2 col-form-label" style="font-weight: bold">Grade :</label>
+
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            <select class="form-control" id="exampleSelect1" th:field="*{grade}">
+                                <option value="Doctorant">Doctorant</option>
+                                <option value="Docteur">Docteur</option>
+                                <option value="PA">PA</option>
+                                <option value="PH">PH</option>
+                                <option value="PES">PES</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                 <div class="card" style="width: 100%;border:0px">
+                <div class="card-header">
+                    Adresse
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label for="inputVille" class="col-sm-2 col-form-label" style="font-weight: bold">Ville</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{adresse.ville}" class="form-control" placeholder="Ville" id="inputVille" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPays" class="col-sm-2 col-form-label" style="font-weight: bold">Pays</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{adresse.pays}" class="form-control" placeholder="Prenom" id="inputPays" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputZip" class="col-sm-2 col-form-label" style="font-weight: bold">Zip code</label>
+                        <div class="col-sm-10">
+                            <input type="number" th:field="*{adresse.zipCode}" placeholder="Zip code" class="form-control" id="inputZip" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card mt-2" style="width: 100%">
+                <div class="card-header">
+                    Organisme
+                </div>
+                <div class="card-body">
+                    <select class="form-control" th:field="*{organisme}">
+                        <option th:each="o: ${organismes}" th:value="${o.id}" th:text="${o.name}"></option>
+                    </select>
+                </div>
+            </div>
+            
+         </div>
+
+           
+
+            <button type="submit" class="btn btn-primary mt-2" style="color: #333;background-color: #f7f7f7;border-color: #ffffff;">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>

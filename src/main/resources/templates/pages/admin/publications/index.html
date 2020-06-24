@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Publications</title>
+        <meta charset="UTF-8"/>
+</head>
+<body>
+    <div layout:fragment="admin_content">
+
+      <div th:if="${message}">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">—</button>
+                <span class="alert-link" th:text="${message}"></span>.
+            </div>
+        </div>
+<!-- @{/admin/publications/create} -->
+      <div class="d-flex justify-content-between align-items-center text-white">
+            <div th:replace="components/HeaderContent :: header_content(title = 'Publications')"></div>
+        </div>
+
+        <div th:switch="${publications}">
+            <div th:case="null">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">—</button>
+                    <strong>err !</strong> <a href="#" class="alert-link">Aucun donnée.
+                    <a type="button" class="btn btn-primary" style="background-color: #797574; border-color: #fff;" th:href="@{/admin/publications/create}">Ajouter</a>
+                </div>
+            </div>
+            <div th:case="*">
+                <div class="card" style="clear: both">
+                    <div class="card-body p-0">
+                        <table class="table table-bordered" style="margin-bottom:0px;">
+                            <thead style="background-color: #797574 !important;">
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Date publication</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Decipline</th>
+                                <th scope="col" style="width: 18%; text-align: center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="p, i: ${publications}">
+                                <td th:text="${p.title}"></td>
+                                <td th:text="${#dates.format(p.datePublication, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${p.category.name}"></td>
+                                <td th:text="${p.decipline.name}"></td>
+                                <td class="text-center">
+                                    <div class="dropdown">
+                                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            actions
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <!-- <a class="dropdown-item" th:href="@{/admin/publications/{id}/tags (id = ${p.id})}">tags</a> -->
+                                            <a class="dropdown-item" th:href="@{/admin/publication/{id}/authors(id = ${p.id})}">Auteurs</a>
+                                            <a class="dropdown-item" th:href="@{/admin/publications/show/{id}(id = ${p.id})}">Voir</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+      <a type="button" class="btn btn-primary" style="background-color: #797574; border-color: #fff;" th:href="@{/admin/publications/create}">Ajouter</a>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

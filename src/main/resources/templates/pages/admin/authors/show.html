@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head> 
+     <title th:text="${author.nom} +' '+ ${author.prenom}"></title> 
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div layout:fragment="admin_content">
+    <div class="card" style="width: 100%">
+        <div class="card-body">
+            <div class="media">
+                <img src="https://www.nourbook.com/publice/images/user.png" class="mr-4">
+                <div class="media-body">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mt-0" th:text="${author.nom} +' '+ ${author.prenom}"></h5>
+                        <small>date de création :<small th:text="${#dates.format(author.createdAt, 'yyyy-MM-dd')}"></small></small>
+                        
+                    </div>
+
+                    <dl class="row pt-5">
+                        <dt class="col-sm-4">Date de naissance</dt>
+                        <dd class="col-sm-8" th:text="${#dates.format(author.dateNaissance, 'yyyy-MM-dd')}"></dd>
+                        <dt class="col-sm-4">Grade</dt>
+                        <dd class="col-sm-8" th:text="${author.grade}"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width: 100%;border:0px">
+        <div class="card-header">
+            Author adresse
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Ville</dt>
+                <dd class="col-sm-8" th:text="${author.adresse.ville}"></dd>
+                <dt class="col-sm-4">Pays</dt>
+                <dd class="col-sm-8" th:text="${author.adresse.pays}"></dd>
+                <dt class="col-sm-4">Zip code</dt>
+                <dd class="col-sm-8" th:text="${author.adresse.zipCode}"></dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="card mt-2" style="width: 100%;border:0px">
+        <div class="card-header">
+            Author organisme
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">Type</dt>
+                <dd class="col-sm-8" th:text="${author.organisme.type}"></dd>
+                <dt class="col-sm-4">Name</dt>
+                <dd class="col-sm-8" th:text="${author.organisme.name}"></dd>
+            </dl>
+                     <form th:action="@{/admin/authors/delete/{id} (id = ${author.id}) }" method="get">
+                     <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+        
+    </div>
+    
+    </div>
+
+    
+</div>
+</body>
+</html>

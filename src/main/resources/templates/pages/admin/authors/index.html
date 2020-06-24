@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/Admin}">
+<head>
+    <title>Aufteurs</title>
+     <meta charset="UTF-8"/>
+</head>
+<body>
+    <div layout:fragment="admin_content">
+
+        <div th:if="${message}">
+            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">—</button>
+                <span class="alert-link" th:text="${message}"></span>.
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center text-white">
+            <div th:replace="components/HeaderContent :: header_content(title = 'Auteurs')"></div>
+        </div>
+
+        <div th:switch="${authors}">
+            <div th:case="null">
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">—</button>
+                    <strong>err !</strong> <a href="#" class="alert-link">Aucun donnée.
+                   <a type="button" class="btn btn-primary" style="background-color: #797574; border-color: #fff;" th:href="@{/admin/authors/create}">Ajouter</a>
+                
+                </div>
+            </div>
+            <div th:case="*">
+                <div class="card" style="clear: both">
+                    <div class="card-body p-0">
+                        <table class="table table-bordered" style="margin-bottom:0px;">
+                            <thead style="background-color: #797574 !important;">
+                            <tr>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Date de naissance</th>
+                                <th scope="col">grade</th>
+                                <th scope="col" style="width: 18%; text-align: center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="a, i: ${authors}">
+                                <td th:text="${a.nom}"></td>
+                                <td th:text="${a.prenom}"></td>
+                                <td th:text="${#dates.format(a.dateNaissance, 'yyyy-MM-dd')}"></td>
+                                <td th:text="${a.grade}"></td>
+                                <td>
+                                    <div class="btn-group-sm mr-2 text-center" role="group" aria-label="Second group">
+                                        <a type="button" th:href="@{/admin/authors/show/{id} (id = ${a.id})}" class="btn btn-outline-info">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                      <a type="button" class="btn btn-primary" style="background-color: #797574; border-color: #fff;" th:href="@{/admin/authors/create}">Ajouter</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
