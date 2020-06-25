@@ -3,7 +3,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/Admin}">
 <head>
-    <title>Admin page</title>
+    <title>Administration</title>
+    <meta charset="UTF-8"/>
 </head>
 <body>
     <div layout:fragment="admin_content">
@@ -17,24 +18,24 @@
                     <a th:href="@{/admin/publications}" type="button" class="btn btn-lg btn-block">Publications</a>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title" th:text="${publications}">0</h1>
+                    <h1 class="card-title pricing-card-title" th:text="${publications}"></h1>
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <a th:href="@{/admin/authors}" type="button" class="btn btn-lg btn-block">Authors</a>
+                    <a th:href="@{/admin/authors}" type="button" class="btn btn-lg btn-block">Auteurs</a>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title" th:text="${authors}">15</h1>
+                    <h1 class="card-title pricing-card-title" th:text="${authors}"></h1>
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                   <a th:href="@{/admin/categories}" type="button" class="btn btn-lg btn-block">Categories</a>
+                   <a th:href="@{/admin/categories}" type="button" class="btn btn-lg btn-block">Catégories</a>
                     
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title" th:text="${categories}">29</h1>
+                    <h1 class="card-title pricing-card-title" th:text="${categories}"></h1>
                 </div>
             </div>
         </div>

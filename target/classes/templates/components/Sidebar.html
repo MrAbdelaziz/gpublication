@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+<head><meta charset="UTF-8"/></head>
 <body>
 
     <!-- Sidebar -->
@@ -15,7 +17,7 @@
             <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-dashboard fa-fw mr-3"></span> 
-                    <span class="menu-collapsed text-black-50">Dashboard</span>
+                    <span class="menu-collapsed text-black-50">Tableau de bord</span>
                     <span class="submenu-icon ml-auto"></span>
                 </div>
             </a>
@@ -28,14 +30,14 @@
              <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-user fa-fw mr-3"></span> 
-                    <span class="menu-collapsed text-black-50">users</span>
+                    <span class="menu-collapsed text-black-50">utilisateurs</span>
                     <span class="submenu-icon ml-auto"></span>
                 </div>
             </a>
             <!-- Submenu content -->
             <div id='submenu2' class="collapse sidebar-submenu">
                 <a th:href="@{/admin/authors}" class="list-group-item list-group-item-action  text-black-50">
-                    <span class="menu-collapsed">Authors</span>
+                    <span class="menu-collapsed">Auteurs</span>
                 </a>
             </div>       
             
@@ -50,15 +52,15 @@
             <!-- Submenu content -->
             <div id='submenu3' class="collapse sidebar-submenu">
                 <a th:href="@{/admin/categories}" class="list-group-item list-group-item-action  text-black-50">
-                    <span class="menu-collapsed">Category</span>
+                    <span class="menu-collapsed">Catégories</span>
                 </a>
                 
                 <a th:href="@{/admin/deciplines}" class="list-group-item list-group-item-action  text-black-50">
-                    <span class="menu-collapsed">Decipline</span>
+                    <span class="menu-collapsed">Disciplines</span>
                 </a>
                 
                 <a th:href="@{/admin/organismes}" class="list-group-item list-group-item-action  text-black-50">
-                    <span class="menu-collapsed">Organisme</span>
+                    <span class="menu-collapsed">Organismes</span>
                 </a>
                 
                 <a th:href="@{/admin/publications}" class="list-group-item list-group-item-action  text-black-50">

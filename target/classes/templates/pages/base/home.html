@@ -17,8 +17,8 @@
 					<div class="card-body p-2">
 						<form th:object="${publication}" method="get" th:action="@{/}">
 							<div class="form-group">
-								<label class="font-weight-bold">Title</label> <input type="text"
-									class="form-control" name="title" placeholder="elouahab"
+								<label class="font-weight-bold">Titre</label> <input type="text"
+									class="form-control" name="title" placeholder="keyboard or mouse"
 									th:field="*{title}">
 							</div>
 
@@ -32,7 +32,7 @@
 					<div class="card-body p-2">
 						<form th:object="${publication}" method="get" th:action="@{/}">
 							<div class="form-group">
-								<label class="font-weight-bold">Categorie</label> <select
+								<label class="font-weight-bold">Catégorie </label> <select
 									class="form-control" th:name="catId" th:field="*{category.id}">
 									<option th:each="c: ${categories}" th:value="${c.id}"
 										th:text="${c.name}"></option>
@@ -45,7 +45,7 @@
 								<div class="card-body p-2">
 									<form th:object="${publication}" method="get" th:action="@{/}">
 										<div class="form-group">
-											<label class="font-weight-bold">Decipline</label> <select
+											<label class="font-weight-bold">Discipline</label> <select
 												class="form-control" th:name="decId" th:field="*{decipline.id}">
 												<option th:each="d: ${deciplines}" th:value="${d.id}"
 													th:text="${d.name}"></option>
@@ -97,11 +97,11 @@
 
 							<div class="card-body">
 								<dl class="row pt-1">
-									<dt class="col-sm-4">Title :</dt>
+									<dt class="col-sm-4">Titre :</dt>
 									<dd class="col-sm-8" th:text="${p.title}"></dd>
 									<dt class="col-sm-4">Catégorie :</dt>
 									<dd class="col-sm-8" th:text="${p.category.name}"></dd>
-									<dt class="col-sm-4">Decipline :</dt>
+									<dt class="col-sm-4">Discipline :</dt>
 									<dd class="col-sm-8" th:text="${p.decipline.name}"></dd>
 									<dt class="col-sm-4">Résumé :</dt>
 									<dd class="col-sm-8">
