@@ -1,4 +1,4 @@
-# gestion des publications
+# Gestion des publications
 Une plateforme de gestion des publications scientifique qui permet de récupérer,
 importer, sauvegarder, mémoriser des articles scientifiques des auteurs.
 
