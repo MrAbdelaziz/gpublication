@@ -23,6 +23,3 @@ Admin
 Guest
 :-------------------------:|
 <img align="center" height="350" width="845"  src="https://github.com/MrAbdelaziz/gpublication/blob/master/ScreenShots/index.png"> |
-
-## social media :
-- iG: https://www.instagram.com/_.abdelaziz._/
